@@ -2,7 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const path = require('path');
-const router = require('./routes/cars');
+const router = require('./routes/movies');
+const cors=require('cors');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 require('colors');
@@ -14,6 +15,7 @@ app.use(morgan('dev'));
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(helmet());
+app.use(cors());
 
 app.use(express.json());
 app.use('/', router);
